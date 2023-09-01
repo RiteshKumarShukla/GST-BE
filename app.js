@@ -1,6 +1,7 @@
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -16,12 +17,12 @@ app.get("/fetch-data", async (req, res) => {
       "https://api.mastergst.com/public/search",
       {
         params: {
-          email: "pritampritamhalder@gmail.com",
-          gstin: "33AAGCC7144L6ZE",
+          email: process.env.EMAIL,
+          gstin: process.env.GSTIN,
         },
         headers: {
-          client_id: "a207fac9-e0fb-4f4e-83e4-e6e02f6eefda",
-          client_secret:"6a89e98b-ae2d-4221-b54a-254e52de07c7",
+          client_id: process.env.CLIENTID,
+          client_secret: process.env.CLIENTSECRET,
         },
       }
     );
